@@ -4,10 +4,45 @@ import { Connection } from 'mongoose';
 
 @Injectable()
 export class AppService {
-  constructor(@InjectConnection() private connection: Connection) {}
+  constructor(@InjectConnection() private connection: Connection) {
+  }
 
-  getMain() {
-    console.log(`[app.service] getMain()`);
-    return this.connection.collection('main').findOne();
+  async getInfoByCollection(collectionName) {
+    console.log(`[app.service] get ${collectionName}()`);
+    const data = await this.connection.collection(collectionName).findOne();
+    const { _id, ...result } = data;
+    return result;
+  }
+
+  async getMain() {
+    return await this.getInfoByCollection('main');
+  }
+
+  async getCounter() {
+    return await this.getInfoByCollection('counter');
+  }
+
+  async getCareer() {
+    return await this.getInfoByCollection('career');
+  }
+
+  async getSolution() {
+    return await this.getInfoByCollection('solution');
+  }
+
+  async getTechnology() {
+    return await this.getInfoByCollection('technology');
+  }
+
+  async getHeaderChangeData() {
+    return await this.getInfoByCollection('headerChangeData');
+  }
+
+  async getDropDownMenu() {
+    return await this.getInfoByCollection('dropDownMenu');
+  }
+
+  async getFooter() {
+    return await this.getInfoByCollection('footer');
   }
 }
