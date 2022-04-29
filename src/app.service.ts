@@ -34,15 +34,11 @@ export class AppService {
     return await this.getInfoByCollection('technology');
   }
 
-  async getHeaderChangeData() {
-    return await this.getInfoByCollection('headerChangeData');
+  async getMenu() {
+    return await this.getInfoByCollection('menu');
   }
 
-  async getDropDownMenu() {
-    return await this.getInfoByCollection('dropDownMenu');
-  }
-
-  async getFooter() {
-    return await this.getInfoByCollection('footer');
+  async getIntroduce() {
+    return await this.getInfoByCollection('introduce');
   }
 }

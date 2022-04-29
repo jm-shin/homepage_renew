@@ -5,7 +5,7 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('main')
+  @Get('')
   getMain() {
     return this.appService.getMain();
   }
@@ -30,18 +30,13 @@ export class AppController {
     return this.appService.getTechnology();
   }
 
-  @Get('headerChangeData')
-  getHeaderChangeData() {
-    return this.appService.getHeaderChangeData();
-  }
-
-  @Get('dropDownMenu')
+  @Get('menu')
   getDropDownMenu() {
-    return this.appService.getDropDownMenu();
+    return this.appService.getMenu();
   }
 
-  @Get('footer')
-  getFooter() {
-    return this.appService.getFooter();
+  @Get('introduce')
+  getIntroduce() {
+    return this.appService.getIntroduce();
   }
 }
