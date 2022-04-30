@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException, Logger } from '@nestjs/common';
 import { InjectConnection } from '@nestjs/mongoose';
 import { Connection } from 'mongoose';
 
@@ -7,9 +7,12 @@ export class AppService {
   constructor(@InjectConnection() private connection: Connection) {
   }
 
+  private readonly logger = new Logger(AppService.name);
+
   async getInfoByCollection(collectionName) {
-    console.log(`[app.service] get ${collectionName}()`);
+    this.logger.log(`[getInfoByCollection] get ${collectionName}()`);
     const data = await this.connection.collection(collectionName).findOne();
+    if (!data) throw new NotFoundException();
     const { _id, ...result } = data;
     return result;
   }

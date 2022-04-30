@@ -32,3 +32,8 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+
+## Setting
+- root 경로에 .env 파일 생성
+```text
+MONGO_HOST=mongodb://[username:password@]localhost:27017
