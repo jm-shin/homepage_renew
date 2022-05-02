@@ -34,6 +34,27 @@ $ npm run start:prod
 ```
 
 ## Setting
-- root 경로에 .env 파일 생성
+
+### Create File
+root 경로에 .env 파일 생성
+
 ```text
-MONGO_HOST=mongodb://[username:password@]localhost:27017
+MONGO_HOST=mongodb://[username:password@]localhost:27017/homepage
+```
+
+### Mongo DB
+
+```bash
+> use homepage
+> db.createCollection()
+```
+
+### Mongo Collection List
+
+- main
+- counter
+- career
+- solution
+- technology
+- menu
+- introduce 
