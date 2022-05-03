@@ -8,6 +8,8 @@ Homepage Renewal API
 |---|---|---|
 |/|GET|홈페이지 메인 정보 불러오기|
 |/menu|GET|홈페이지 메뉴 정보 불러오기|
+|/menu/header|GET|홈페이지 메뉴 header 정보 불러오기|
+|/menu/footer|GET|홈페이지 메뉴 footer 정보 불러오기|
 |/technology|GET|홈페이지 기술 정보 불러오기|
 |/introduce|GET|홈페이지 소개 정보 불러오기|
 |/solution|GET|홈페이지 솔루션 정보 불러오기|
