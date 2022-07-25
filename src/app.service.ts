@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, Logger, InternalServerErrorException } from '@nestjs/common';
+import { Injectable, NotFoundException, Logger } from '@nestjs/common';
 import { InjectConnection } from '@nestjs/mongoose';
 import { Connection } from 'mongoose';
 import { ObjectId } from 'mongodb';

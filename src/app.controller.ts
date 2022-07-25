@@ -7,6 +7,36 @@ export class AppController {
   constructor(private readonly appService: AppService) {
   }
 
+  //채용 공고 - 등록
+  @Post('recruit')
+  createRecruit(@Body() body: Recruit) {
+    return this.appService.insertRecruit(body);
+  }
+
+  // 채용 공고 - 수정
+  @Put('recruit/:id')
+  updateRecruit(@Param('id') id: string, @Body() body: Recruit) {
+    return this.appService.updateRecruit(id, body);
+  }
+
+  // 채용 공고 - 삭제
+  @Delete('recruit/:id')
+  removeRecruit(@Param('id') id: string) {
+    return this.appService.deleteRecruit(id);
+  }
+
+  // 채용 공고 - 상세보기
+  @Get('recruit/detail/:id')
+  getRecruit(@Param('id') id: string) {
+    return this.appService.findOneRecruit(id);
+  }
+
+  // 채용 공고 - 목록
+  @Get('recruit/list')
+  getRecruitList() {
+    return this.appService.findAllRecruit();
+  }
+
   @Get('/main')
   getMain() {
     return this.appService.getMain();
@@ -45,35 +75,5 @@ export class AppController {
   @Get('company')
   getCompany() {
     return this.appService.getCompany();
-  }
-
-  //채용 공고 - 등록
-  @Post('management/register')
-  createRecruit(@Body() body: Recruit) {
-    return this.appService.insertRecruit(body);
-  }
-
-  // 채용 공고 - 상세보기
-  @Get('management/detail/:id')
-  getRecruit(@Param('id') id: string) {
-    return this.appService.findOneRecruit(id);
-  }
-
-  // 채용 공고 - 목록
-  @Get('management/list')
-  getRecruitList() {
-    return this.appService.findAllRecruit();
-  }
-
-  // 채용 공고 - 수정
-  @Put('management/register')
-  updateRecruit(@Body('id') id: string, @Body() body: Recruit) {
-    return this.appService.updateRecruit(id, body);
-  }
-
-  // 채용 공고 - 삭제
-  @Delete('management/register')
-  removeRecruit(@Body('id') id: string) {
-    return this.appService.deleteRecruit(id);
   }
 }
