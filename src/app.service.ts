@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException, Logger, InternalServerErrorException } from '@nestjs/common';
 import { InjectConnection } from '@nestjs/mongoose';
 import { Connection } from 'mongoose';
+import { ObjectId } from 'mongodb';
 
 @Injectable()
 export class AppService {
@@ -8,6 +9,32 @@ export class AppService {
   }
 
   private readonly logger = new Logger(AppService.name);
+
+  insertRecruit(recruitInfo) {
+    this.logger.log(`insert data: ${JSON.stringify(recruitInfo)}`);
+    return this.connection.collection('recruit').insertOne(recruitInfo);
+  }
+
+  findOneRecruit(mongoId) {
+    this.logger.log(`findOne mongo id: ${mongoId}`);
+    return this.connection.collection('recruit').findOne({ _id: new ObjectId(mongoId) });
+  }
+
+  findAllRecruit() {
+    this.logger.log('findAll recruit start');
+    return this.connection.collection('recruit').find({}).toArray();
+  }
+
+  updateRecruit(mongoId, info) {
+    this.logger.log(`update mongo id: ${mongoId}, info: ${JSON.stringify(info)}`);
+    delete info.id;
+    return this.connection.collection('recruit').updateOne({ _id: new ObjectId(mongoId) }, { $set: info });
+  }
+
+  deleteRecruit(mongoId) {
+    this.logger.log(`delete mongo id: ${mongoId}`);
+    return this.connection.collection('recruit').deleteOne({ _id: new ObjectId(mongoId) });
+  }
 
   async getInfoByCollection(collectionName) {
     this.logger.log(`[getInfoByCollection] get ${collectionName}()`);
@@ -37,12 +64,8 @@ export class AppService {
     return await this.getInfoByCollection('main');
   }
 
-  async getCounter() {
-    return await this.getInfoByCollection('counter');
-  }
-
-  async getCareer() {
-    return await this.getInfoByCollection('career');
+  async getRecruiting() {
+    return await this.getInfoByCollection('recruiting');
   }
 
   async getSolution() {
@@ -65,7 +88,7 @@ export class AppService {
     return await this.getInfoByMenuCollection('footer');
   }
 
-  async getIntroduce() {
-    return await this.getInfoByCollection('introduce');
+  async getCompany() {
+    return await this.getInfoByCollection('company');
   }
 }

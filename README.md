@@ -59,4 +59,4 @@ MONGO_HOST=mongodb://[username:password@]localhost:27017/homepage
 - solution
 - technology
 - menu
-- introduce 
+- introduce
