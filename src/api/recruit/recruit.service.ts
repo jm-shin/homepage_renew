@@ -1,14 +1,15 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { ObjectId } from 'mongodb';
 import { InjectConnection } from '@nestjs/mongoose';
 import { Connection } from 'mongoose';
+import { ObjectId } from 'mongodb';
 
 @Injectable()
 export class RecruitService {
   constructor(
     @InjectConnection()
     private connection: Connection,
-  ) {}
+  ) {
+  }
 
   private readonly logger = new Logger(RecruitService.name);
 
@@ -19,12 +20,37 @@ export class RecruitService {
 
   findOneRecruit(mongoId) {
     this.logger.log(`findOne mongo id: ${mongoId}`);
-    return this.connection.collection('recruit').findOne({ _id: new ObjectId(mongoId) });
+    return this.connection.collection('recruit').aggregate([
+      { $match: { _id: new ObjectId(mongoId) } },
+      {
+        $project: {
+          id: '$_id',
+          _id: 0,
+          title: 1,
+          startDate: 1,
+          endDate: 1,
+          limit: 1,
+          task: 1,
+          ability: 1,
+          announce: 1,
+          keyword: 1,
+        },
+      },
+    ]).toArray();
   }
 
   findAllRecruit() {
     this.logger.log('findAll recruit start');
-    return this.connection.collection('recruit').find({}).toArray();
+    return this.connection.collection('recruit').aggregate([{
+      $project: {
+        id: '$_id',
+        _id: 0,
+        title: 1,
+        startDate: 1,
+        endDate: 1,
+        keyword: 1,
+      },
+    }]).toArray();
   }
 
   updateRecruit(mongoId, info) {
