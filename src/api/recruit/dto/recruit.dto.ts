@@ -1,4 +1,4 @@
-import { IsArray, IsBoolean, IsDefined, IsIn, IsOptional, IsString } from 'class-validator';
+import { IsArray, IsBoolean, IsDefined, IsOptional, IsString } from 'class-validator';
 
 export class RecruitDto {
   @IsDefined()

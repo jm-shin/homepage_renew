@@ -3,6 +3,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { RecruitModule } from './api/recruit/recruit.module';
 import { UserModule } from './api/user/user.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
   imports: [
@@ -11,5 +13,8 @@ import { UserModule } from './api/user/user.module';
     RecruitModule,
     UserModule,
   ],
+  providers: [AppService],
+  controllers: [AppController],
 })
-export class AppModule {}
+export class AppModule {
+}
