@@ -34,6 +34,7 @@ export class RecruitService {
           ability: 1,
           announce: 1,
           keyword: 1,
+          default: 1,
         },
       },
     ]).toArray();
