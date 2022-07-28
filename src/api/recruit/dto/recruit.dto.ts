@@ -19,6 +19,10 @@ export class RecruitDto {
 
   @IsDefined()
   @IsString()
+  readonly task: string;
+
+  @IsDefined()
+  @IsString()
   readonly ability: string;
 
   @IsDefined()
@@ -27,5 +31,11 @@ export class RecruitDto {
 
   @IsOptional()
   @IsArray()
+  @IsString({ each: true })
   readonly keyword: string[];
+
+  @IsDefined()
+  @IsArray()
+  @IsString({ each: true })
+  readonly default: string[];
 }
