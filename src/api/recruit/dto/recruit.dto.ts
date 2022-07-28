@@ -18,15 +18,18 @@ export class RecruitDto {
   readonly limit: boolean;
 
   @IsDefined()
-  @IsString()
+  @IsArray()
+  @IsString({ each: true })
   readonly task: string;
 
   @IsDefined()
-  @IsString()
+  @IsArray()
+  @IsString({ each: true })
   readonly ability: string;
 
   @IsDefined()
-  @IsString()
+  @IsArray()
+  @IsString({ each: true })
   readonly announce: string;
 
   @IsOptional()

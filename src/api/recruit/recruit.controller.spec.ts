@@ -11,7 +11,7 @@ describe('RecruitController', () => {
 
   const recruits: Recruit[] = [
     {
-      _id: '62e21e6655dd55605589f09e',
+      id: '62e21e6655dd55605589f09e',
       title: '제목',
       startDate: '2022-07-25',
       endDate: '2022-08-25',
@@ -23,7 +23,7 @@ describe('RecruitController', () => {
       default: [],
     },
     {
-      _id: '32e21e6655dd55605589f09c',
+      id: '32e21e6655dd55605589f09c',
       title: '제목2',
       startDate: '2022-07-26',
       endDate: '2022-08-26',
@@ -35,10 +35,10 @@ describe('RecruitController', () => {
       default: [],
     },
     {
-      _id: '72e21e6655dd55605589f19a',
-      title: '제목2',
-      startDate: '2022-07-26',
-      endDate: '2022-08-26',
+      id: '72e21e6655dd55605589f19a',
+      title: '제목3',
+      startDate: '2022-07-27',
+      endDate: '2022-08-27',
       limit: true,
       task: 'DevOps',
       ability: 'AWS',
@@ -67,10 +67,30 @@ describe('RecruitController', () => {
     expect(controller).toBeDefined();
   });
 
-  it('GET on /recruit/list return all recruit info', async () => {
-    recruitService.findAllRecruit.mockReturnValue(recruits);
-    const result = await controller.getRecruitList();
-    expect(result.length).toBe(3);
+  describe('GET /recruit/list', () => {
+    it('should return all recruit info', async () => {
+      recruitService.findAllRecruit.mockReturnValue(recruits);
+      const result = await controller.getRecruitList();
+      expect(result.length).toBe(3);
+    });
+
+    it('should contain keys', async () => {
+      const keys = [
+        'id', 'title', 'startDate', 'endDate', 'limit', 'task',
+        'ability', 'announce', 'keyword', 'default',
+      ];
+      recruitService.findAllRecruit.mockReturnValue(recruits);
+      const result = await controller.getRecruitList();
+      for (let i = 0; i < result.length; i++) {
+        expect(Object.keys(result[0]).sort()).toEqual(keys.sort());
+      }
+    });
+  });
+
+  describe('POST /recruit', () => {
+    it('should', () => {
+
+    });
   });
 
 });
