@@ -20,17 +20,17 @@ export class RecruitDto {
   @IsDefined()
   @IsArray()
   @IsString({ each: true })
-  readonly task: string;
+  readonly task: string[];
 
   @IsDefined()
   @IsArray()
   @IsString({ each: true })
-  readonly ability: string;
+  readonly ability: string[];
 
   @IsDefined()
   @IsArray()
   @IsString({ each: true })
-  readonly announce: string;
+  readonly announce: string[];
 
   @IsOptional()
   @IsArray()
