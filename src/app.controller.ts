@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -29,11 +29,6 @@ export class AppController {
   @Get('menu')
   getDropDownMenu() {
     return this.appService.getMenu();
-  }
-
-  @Get('menu/header')
-  getHeaderChangeData() {
-    return this.appService.getMenuHeader();
   }
 
   @Get('menu/footer')

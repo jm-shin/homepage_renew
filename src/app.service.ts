@@ -53,10 +53,6 @@ export class AppService {
     return await this.getInfoByMenuCollection('default');
   }
 
-  async getMenuHeader() {
-    return await this.getInfoByMenuCollection('header');
-  }
-
   async getMenuFooter() {
     return await this.getInfoByMenuCollection('footer');
   }

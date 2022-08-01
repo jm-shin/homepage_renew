@@ -101,12 +101,6 @@ describe('API Test (e2e)', () => {
         .send();
       expect(res.status).toBe(200);
     });
-    it('/menu/header (GET) should return 200', async () => {
-      const res = await request(app.getHttpServer())
-        .get('/menu/header')
-        .send();
-      expect(res.status).toBe(200);
-    });
     it('/menu/footer (GET) should return 200', async () => {
       const res = await request(app.getHttpServer())
         .get('/menu/footer')
