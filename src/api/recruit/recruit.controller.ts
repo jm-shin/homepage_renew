@@ -4,7 +4,7 @@ import { RecruitDto } from './dto/recruit.dto';
 import { HttpExceptionFilter } from '../../common/filter/http-exception.filter';
 
 
-@Controller('recruit')
+@Controller('api/recruit')
 @UseFilters(HttpExceptionFilter)
 export class RecruitController {
   constructor(
