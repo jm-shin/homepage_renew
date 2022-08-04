@@ -18,27 +18,23 @@ export class RecruitDto {
   readonly limit: boolean;
 
   @IsDefined()
-  @IsArray()
-  @IsString({ each: true })
-  readonly task: string[];
+  @IsBoolean()
+  readonly done: boolean;
 
   @IsDefined()
-  @IsArray()
-  @IsString({ each: true })
-  readonly ability: string[];
+  @IsString()
+  readonly task: string;
 
   @IsDefined()
-  @IsArray()
-  @IsString({ each: true })
-  readonly announce: string[];
+  @IsString()
+  readonly ability: string;
+
+  @IsDefined()
+  @IsString()
+  readonly announce: string;
 
   @IsOptional()
   @IsArray()
   @IsString({ each: true })
   readonly keyword: string[];
-
-  @IsDefined()
-  @IsArray()
-  @IsString({ each: true })
-  readonly default: string[];
 }

@@ -8,8 +8,7 @@ export class RecruitService {
   constructor(
     @InjectConnection()
     private connection: Connection,
-  ) {
-  }
+  ) {}
 
   private readonly logger = new Logger(RecruitService.name);
 
@@ -30,11 +29,11 @@ export class RecruitService {
           startDate: 1,
           endDate: 1,
           limit: 1,
+          done: 1,
           task: 1,
           ability: 1,
           announce: 1,
           keyword: 1,
-          default: 1,
         },
       },
     ]).toArray();
@@ -49,6 +48,7 @@ export class RecruitService {
         title: 1,
         startDate: 1,
         endDate: 1,
+        done: 1,
         keyword: 1,
       },
     }]).toArray();
